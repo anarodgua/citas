@@ -79,7 +79,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                     CGIS: Citas
+                     Gestor de Citas Avanzado: AskForHealth
+                </div>
+                <div>
+                    AskforHealth es una herramienta para la gestión de citas hospitalarias. <br> <br>
                 </div>
 
                 <div class="links">
@@ -88,6 +91,9 @@
                     <a href="https://laravelcollective.com/docs/5.3/html">Formularios</a>
                     <a href="http://php.net/manual/es/langref.php">PHP</a>
                     <a href="https://www.mysql.com/products/workbench/">MySQL</a>
+                    <div align="right">
+                        Ana Rodríguez Gualda
+                    </div>
                 </div>
             </div>
         </div>

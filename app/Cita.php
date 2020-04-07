@@ -4,18 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class dCita extends Model
+class Cita extends Model
 {
-    protected $fillable = ['fecha_hora', 'medico_id', 'paciente_id'];
+    protected $fillable = ['fechaInicio','fechaFin', 'medico_id', 'paciente_id','localizacion_id','tipoCita'];
 
     public function medico()
     {
-        return $this->belongsTo('App\Medico');
+        return $this->belongsTo('App\User');
     }
 
     public function paciente()
     {
-        return $this->belongsTo('App\Paciente');
+        return $this->belongsTo('App\User');
+    }
+    public function localizacion()
+    {
+        return $this->belongsTo('App\Localizacion');
     }
 
 }

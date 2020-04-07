@@ -9,21 +9,27 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name','surname', 'email', 'password','userType','nuhsa','especialidad_id',
+        'medico_id','poliza_id','centroSanitario_id'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+
+    public function poliza()
+    {
+        return $this->belongsTo('App\Poliza');
+    }
+    public function especialidad()
+    {
+        return $this->belongsTo('App\Especialidad');
+    }
+    public function centroSanitario()
+    {
+        return $this->belongsTo('App\CentroSanitario');
+    }
+    public function citas()
+    {
+        return $this->hasMany('App\Cita');
+    }
+
+
+    protected $hidden = ['password', 'remember_token'];
 }
