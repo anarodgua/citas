@@ -15,15 +15,19 @@ class User extends Authenticatable
 
     public function poliza()
     {
-        return $this->belongsTo('App\Poliza');
+        return $this->belongsTo('App\Poliza','poliza_id');
     }
     public function especialidad()
     {
-        return $this->belongsTo('App\Especialidad');
+        return $this->belongsTo('App\Especialidad','especialidad_id');
     }
     public function centroSanitario()
     {
-        return $this->belongsTo('App\CentroSanitario');
+        return $this->belongsTo('App\CentroSanitario','centroSanitario_id');
+    }
+    public function medico()
+    {
+        return $this->belongsTo('App\User','medico_id');
     }
     public function citas()
     {

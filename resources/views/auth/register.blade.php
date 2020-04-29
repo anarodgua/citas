@@ -1,119 +1,120 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Registro') }}</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Registro</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        {{ csrf_field() }}
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
 
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
 
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors }}</strong>
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
+                                @endif
                             </div>
+                        </div>
 
-                            <div class="form-group row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Apellido) }}</label>
+                        <div class="form-group row">
+                            <label for="surname" class="col-md-4 control-label">Apellidos</label>
 
-                                <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+                            <div class="col-md-6">
+                                <input id="surname" type="text" class="form-control" name="surname" value="{{ old('surname') }}" required autofocus>
 
-                                    @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors }}</strong>
+                                @if ($errors->has('surname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('surname') }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
+                                @endif
                             </div>
+                        </div>
 
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo-e') }}</label>
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
 
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors }}</strong>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                                @endif
+                            </div>
+                        </div>
 
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 control-label">Password</label>
 
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
 
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors }}</strong>
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                                @endif
+                            </div>
+                        </div>
 
-                                <div class="form-group row">
-                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirme contraseña') }}</label>
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Password</label>
 
-                                    <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                </div>
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
 
-                                <div class="form-group row">
-                                    <label for="nuhsa" class="col-md-4 col-form-label text-md-right">{{ __('NUHSA') }}</label>
+                        <div class="form-group row">
+                            <label for="nuhsa" class="col-md-4 control-label">NUHSA</label>
 
-                                    <div class="col-md-6">
-                                        <input id="nuhsa" type="text" class="form-control @error('nuhsa') is-invalid @enderror" name="nuhsa" value="{{ old('nuhsa') }}" required autocomplete="nuhsa" autofocus>
+                            <div class="col-md-6">
+                                <input id="nuhsa" type="nuhsa" class="form-control" name="nuhsa" value="{{ old('nuhsa') }}" >
 
-                                        @error('nuhsa')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors }}</strong>
+                                @if ($errors->has('nuhsa'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nuhsa') }}</strong>
                                     </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                                @endif
+                            </div>
+                        </div>
 
-                                <div class="form-group row">
-                                    <label for="userType" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de usuario') }}</label>
 
-                                    <div class="col-md-6">
-                                        <input type="radio" id="Médico" name="userType" value="Médico" class="@error('userType') is-invalid @enderror" name="userType" value="{{ old('userType') }}" required autocomplete="userType" autofocus>
-                                        <label for="Médico">Médico</label><br>
-                                        <input type="radio" id="Paciente" name="userType" value="Paciente" class="@error('userType') is-invalid @enderror" name="userType" value="{{ old('userType') }}" required autocomplete="userType" autofocus>
-                                        <label for="Paciente">Paciente</label><br>
-                                        <input type="radio" id="Administrador" name="userType" value="Administrador" class="@error('userType') is-invalid @enderror" name="userType" value="{{ old('userType') }}" required autocomplete="userType" autofocus>
-                                        <label for="Administrador">Administrador</label><br>
 
-                                        @error('userType')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors }}</strong>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 control-label">Tipo de usuario</label>
+
+                            <div class="col-md-6">
+                                <input type="radio" id="Médico" name="userType" value="Médico" class="@error('userType') is-invalid @enderror" name="userType" value="{{ old('userType') }}" required autocomplete="userType" autofocus>
+                                <label for="Médico">Médico</label><br>
+                                <input type="radio" id="Paciente" name="userType" value="Paciente" class="@error('userType') is-invalid @enderror" name="userType" value="{{ old('userType') }}" required autocomplete="userType" autofocus>
+                                <label for="Paciente">Paciente</label><br>
+                                <input type="radio" id="Administrador" name="userType" value="Administrador" class="@error('userType') is-invalid @enderror" name="userType" value="{{ old('userType') }}" required autocomplete="userType" autofocus>
+                                <label for="Administrador">Administrador</label><br>
+
+
+                                @if ($errors->has('userType'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('userType') }}</strong>
                                     </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                                @endif
+                            </div>
+                        </div>
 
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Regístrese') }}
+                                    Registrarse
                                 </button>
                             </div>
                         </div>

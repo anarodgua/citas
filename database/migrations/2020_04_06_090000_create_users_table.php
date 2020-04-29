@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             //TIPO DE USUARIOS
-            $table->enum('userType', ['Administrador', 'Médico','Paciente']);
+            $table->enum('userType', ['Administrador', 'Médico', 'Paciente']);
             //ATRIBUTOS CLASES HIJAS
             $table->String('nuhsa')->nullable();
             $table->unsignedInteger('especialidad_id')->nullable();
